@@ -1,7 +1,7 @@
 # pirant
 devRant API wrapper in Python
 ```
-from pirant import DevRant
+from pirant.app import DevRant
 
 devrant = DevRant()
 
