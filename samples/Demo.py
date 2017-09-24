@@ -1,4 +1,4 @@
-from pirant import DevRant
+from pirant.pirant import DevRant
 
 devrant = DevRant()
 
