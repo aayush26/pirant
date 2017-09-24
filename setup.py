@@ -2,8 +2,9 @@ from setuptools import setup
 from setuptools import find_packages
 setup(
     name='pirant',
-    version='0.1.2dev1',
+    version='0.1.3dev1',
     author = "aayush",
+    author_email='aayushsingh.mail@gmail.com',
     url="https://github.com/aayush26/pirant",
     license='MIT',
     description = "DevRant wrapper in Python",
