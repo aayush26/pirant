@@ -2,7 +2,7 @@ from setuptools import setup
 from setuptools import find_packages
 setup(
     name='pirant',
-    version='0.1.0devl',
+    version='0.1.0dev1',
     author = "aayush",
     url="https://github.com/aayush26/pirant",
     license='MIT',
