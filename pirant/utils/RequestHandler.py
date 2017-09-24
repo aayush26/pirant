@@ -1,4 +1,4 @@
-from UrlBuilder import URLBuilder
+from .UrlBuilder import URLBuilder
 import requests
 
 class RequestHandler:

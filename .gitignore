@@ -1,1 +1,4 @@
 *.pyc
+/dist/
+/build/
+/pirant.egg-info/

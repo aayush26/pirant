@@ -1,5 +1,5 @@
 import json
-from models.RantsResponse import RantsResponse
+from ..models.RantsResponse import RantsResponse
 
 class ResponseHandler:
 

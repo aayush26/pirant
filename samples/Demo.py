@@ -1,4 +1,4 @@
-from pirant.pirant import DevRant
+from pirant.app import DevRant
 
 devrant = DevRant()
 
