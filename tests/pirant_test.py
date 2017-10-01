@@ -2,7 +2,7 @@
 
 import unittest
 
-from pirant import DevRant
+from pirant.app import DevRant
 
 
 class DevRantTest(unittest.TestCase):
@@ -10,8 +10,8 @@ class DevRantTest(unittest.TestCase):
         self.devRant = DevRant()
 
     def test_getRant(self):
-        print self.devRant.getRant()
-        # self.assertEqual(True, False)
+        # print self.devRant.getRants()
+        self.assertEqual(True, False)
 
 
 if __name__ == '__main__':
