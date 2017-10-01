@@ -9,8 +9,7 @@ class DevRantTest(unittest.TestCase):
 
     def test_getRant(self):
         # TODO: implement real unit tests
-        pass
-        # print(self.devRant.getRants('top', 1, 0))
+        print(self.devRant.getRants('top', 1, 0))
         # self.assertEqual(True, False)
 
 

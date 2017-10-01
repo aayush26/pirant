@@ -1,6 +1,6 @@
 import unittest
 
-from pirant.utils.UrlBuilder import URLBuilder
+from pirant.urlbuilder import URLBuilder
 
 
 class UrlBuilderTest(unittest.TestCase):
