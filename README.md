@@ -1,5 +1,9 @@
 # pirant
+
+[![Build Status](https://travis-ci.org/joserc87/pirant.svg?branch=travis)](https://travis-ci.org/joserc87/pirant)
+
 devRant API wrapper in Python
+
 ```
 from pirant.app import DevRant
 
