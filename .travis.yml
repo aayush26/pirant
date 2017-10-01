@@ -1,1 +1,12 @@
 language: python
+
+python:
+  - "2.7"
+
+install:
+  - pip install colander
+  - pip install requests
+  - pip install pytest
+  - python setup.py -q install
+
+script: pytest tests
