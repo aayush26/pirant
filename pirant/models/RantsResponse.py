@@ -1,5 +1,5 @@
-from News import News
-from Rant import Rants
+from .News import News
+from .Rant import Rants
 
 import colander
 
