@@ -3,7 +3,7 @@ import unittest
 from pirant.utils.UrlBuilder import URLBuilder
 
 
-class UrlBuilderTest(unittest.TestCase):
+class TestUrlBuilder(unittest.TestCase):
 
     def setUp(self):
         self.URLBuilder = URLBuilder()
@@ -14,6 +14,11 @@ class UrlBuilderTest(unittest.TestCase):
     def test_happyCaseGetRantUrl(self):
         test_devRantURL = "https://www.devrant.io/api/devrant/rants?sort=top&limit=10&skip=0&app=3"
         devRantURL = self.URLBuilder.getRantURL(self.test_sort, self.test_limit, self.test_skip)
+        self.assertEqual(test_devRantURL, devRantURL)
+
+    def test_emptySortType(self):
+        test_devRantURL = "https://www.devrant.io/api/devrant/rants?sort=top&limit=10&skip=0&app=3"
+        devRantURL = self.URLBuilder.getRantURL("", self.test_limit, self.test_skip)
         self.assertEqual(test_devRantURL, devRantURL)
 
     def test_invalidSortType(self):
