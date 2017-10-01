@@ -1,5 +1,3 @@
-# sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 import unittest
 
 from pirant import DevRant
@@ -10,7 +8,9 @@ class DevRantTest(unittest.TestCase):
         self.devRant = DevRant()
 
     def test_getRant(self):
-        print(self.devRant.getRants('top', 1, 0))
+        # TODO: implement real unit tests
+        pass
+        # print(self.devRant.getRants('top', 1, 0))
         # self.assertEqual(True, False)
 
 
