@@ -1,1 +1,1 @@
-from app import DevRant
+from .app import DevRant

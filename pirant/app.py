@@ -1,5 +1,5 @@
-from .utils.RequestHandler import RequestHandler
-from .utils.ResponseHandler import ResponseHandler
+from .handlers import RequestHandler, ResponseHandler
+
 
 class DevRant:
 

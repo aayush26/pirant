@@ -2,11 +2,15 @@ language: python
 
 python:
   - "2.7"
+  - "3.3"
+  - "3.4"
+  # PyPy versions
+  - "pypy"  # PyPy2 2.5.0
+  - "pypy3" # Pypy3 2.4.0
+  - "pypy-5.3.1"
 
 install:
-  - pip install colander
-  - pip install requests
-  - pip install pytest
-  - python setup.py -q install
+  - pip install -e .
+  - pip install -r requirements-dev.txt
 
 script: pytest tests
