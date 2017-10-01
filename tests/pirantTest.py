@@ -10,7 +10,7 @@ class DevRantTest(unittest.TestCase):
         self.devRant = DevRant()
 
     def test_getRant(self):
-        print self.devRant.getRant()
+        print(self.devRant.getRants('top', 1, 0))
         # self.assertEqual(True, False)
 
 
