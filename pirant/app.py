@@ -10,3 +10,7 @@ class DevRant:
     def getRants(self, sort, limit, skip):
         response = self.RequestHandler.getRants(sort, limit, skip)
         return self.ResponseHandler.getRantsBuildResponse(response)
+
+    def getRantById(self, rantId):
+        response = self.RequestHandler.getRantById(rantId)
+        return self.ResponseHandler.getRantByIdBuildResponse(response)
