@@ -22,14 +22,37 @@ class Rant(colander.MappingSchema):
 
 
 class Rants(colander.SequenceSchema):
-    rants = Rant()
+    rant = Rant()
 
 
 class RantsResponse(colander.MappingSchema):
     rants = Rants()
     news = News()
-    success = colander.SchemaNode(colander.Boolean())
+    success = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
     error = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
     settings = colander.SchemaNode(colander.String(), missing=colander.drop)
     set = colander.SchemaNode(colander.String())
     wrw = colander.SchemaNode(colander.Int())
+
+
+class Comment(colander.MappingSchema):
+    id = colander.SchemaNode(colander.Int())
+    rant_id = colander.SchemaNode(colander.Int())
+    body = colander.SchemaNode(colander.String())
+    upvotes = colander.SchemaNode(colander.Int(), missing=colander.drop)
+    downvotes = colander.SchemaNode(colander.Int(), missing=colander.drop)
+    score = colander.SchemaNode(colander.Int())
+    created_time = colander.SchemaNode(colander.Int())
+    user_id = colander.SchemaNode(colander.Int())
+    user_username = colander.SchemaNode(colander.String())
+    user_userscore = colander.SchemaNode(colander.Int(), missing=colander.drop)
+
+
+class Comments(colander.SequenceSchema):
+    comment = Comment()
+
+class RantResponse(colander.MappingSchema):
+    comments = Comments()
+    rant = Rant()
+    success = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
+    error = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
