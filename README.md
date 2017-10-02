@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/aayush26/pirant.svg?branch=master)](https://travis-ci.org/aayush26/pirant)
 [![Coverage Status](https://coveralls.io/repos/github/aayush26/pirant/badge.svg?branch=master)](https://coveralls.io/github/aayush26/pirant?branch=master)
-
+[![version](https://img.shields.io/pypi/v/pirant.svg)](https://pypi.python.org/pypi/pirant)
+[![license](https://img.shields.io/pypi/l/pirant.svg)](https://pypi.python.org/pypi/pirant)
 
 devRant API wrapper in Python
 
