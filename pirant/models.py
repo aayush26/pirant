@@ -2,13 +2,13 @@ import colander
 
 
 class News(colander.MappingSchema):
-    id = colander.SchemaNode(colander.Int())
-    type = colander.SchemaNode(colander.String())
-    headline = colander.SchemaNode(colander.String())
-    body = colander.SchemaNode(colander.String())
-    footer = colander.SchemaNode(colander.String())
-    height = colander.SchemaNode(colander.Int())
-    action = colander.SchemaNode(colander.String())
+    id = colander.SchemaNode(colander.Int(), missing=colander.drop)
+    type = colander.SchemaNode(colander.String(), missing=colander.drop)
+    headline = colander.SchemaNode(colander.String(), missing=colander.drop)
+    body = colander.SchemaNode(colander.String(), missing=colander.drop)
+    footer = colander.SchemaNode(colander.String(), missing=colander.drop)
+    height = colander.SchemaNode(colander.Int(), missing=colander.drop)
+    action = colander.SchemaNode(colander.String(), missing=colander.drop)
 
 
 class Rant(colander.MappingSchema):
@@ -31,8 +31,8 @@ class RantsResponse(colander.MappingSchema):
     success = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
     error = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
     settings = colander.SchemaNode(colander.String(), missing=colander.drop)
-    set = colander.SchemaNode(colander.String())
-    wrw = colander.SchemaNode(colander.Int())
+    set = colander.SchemaNode(colander.String(), missing=colander.drop)
+    wrw = colander.SchemaNode(colander.Int(), missing=colander.drop)
 
 
 class Comment(colander.MappingSchema):
@@ -50,6 +50,7 @@ class Comment(colander.MappingSchema):
 
 class Comments(colander.SequenceSchema):
     comment = Comment()
+
 
 class RantResponse(colander.MappingSchema):
     comments = Comments()

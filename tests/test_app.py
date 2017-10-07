@@ -8,8 +8,8 @@ class TestApp(unittest.TestCase):
     def setUp(self):
         self.devrant = DevRant()
 
-    @patch('pirant.handlers.RequestHandler.getRants')
-    def test_happyCaseGetRants(self, mockGetRantsresponse):
+    @patch('pirant.handlers.RequestHandler.get_rants')
+    def test_happyCaseGetRants(self, mock_get_rants_response):
         test_content = {
             'rants': [{
                     'id': 1234,
@@ -34,14 +34,14 @@ class TestApp(unittest.TestCase):
             'wrw': 1
         }
         test_content = json.dumps(test_content)
-        mockResponse = MockHttpResponse(test_content, 200)
-        mockGetRantsresponse.return_value = mockResponse
-        rants = self.devrant.getRants("top",1,0)
-        self.assertTrue(mockGetRantsresponse.called)
+        mock_response = MockHttpResponse(test_content, 200)
+        mock_get_rants_response.return_value = mock_response
+        rants = self.devrant.get_rants("top",1,0)
+        self.assertTrue(mock_get_rants_response.called)
         self.assertEqual(rants['rants'][0]['text'], 'Txt')
 
-    @patch('pirant.handlers.RequestHandler.getRantById')
-    def test_happyCaseGetRantById(self, mockGetRantByIdResponse):
+    @patch('pirant.handlers.RequestHandler.get_rant_by_id')
+    def test_happyCaseGetRantById(self, mock_get_rant_by_id_response):
         test_content = {
             'rant': {
                 'id': 1234,
@@ -68,12 +68,61 @@ class TestApp(unittest.TestCase):
         }
         test_content = json.dumps(test_content)
         test_status_code = 200
-        mockResponse = MockHttpResponse(test_content, test_status_code)
-        mockGetRantByIdResponse.return_value = mockResponse
-        rant = self.devrant.getRantById(2)
-        self.assertTrue(mockGetRantByIdResponse.called)
+        mock_response = MockHttpResponse(test_content, test_status_code)
+        mock_get_rant_by_id_response.return_value = mock_response
+        rant = self.devrant.get_rant_by_id(2)
+        self.assertTrue(mock_get_rant_by_id_response.called)
         assert rant['rant']['id'] == 1234
         assert rant['comments'][0]['upvotes'] == 2
 
-if __name__ == '__main__':
-    unittest.main()
+    @patch('pirant.handlers.RequestHandler.get_weekly_rants')
+    def test_happy_case_get_weekly_rants(self, mock_get_weekly_rants_response):
+        test_content = {
+                "success": True,
+                "rants": [
+                    {
+                        "id": 890185,
+                        "text": "Pixel 2 design looks like shit.",
+                        "score": 1,
+                        "created_time": 1507147639,
+                        "attached_image": "",
+                        "num_comments": 3,
+                        "tags": [
+                            "wk72"
+                        ],
+                        "vote_state": 0,
+                        "edited": False,
+                        "rt": 1,
+                        "rc": 1,
+                        "user_id": 80000,
+                        "user_username": "1234abcd",
+                        "user_score": 366,
+                        "user_avatar": {
+                            "b": "69c9cd",
+                            "i": "v-17_c-3_b-6_g-m_9-1_1-6_16-1_3-2_8-1_7-1_5-1_12-6_6-14_2-3_15-14_11-1_4-1.jpg"
+                        }
+                    },
+                ],
+                "settings": [
+
+                ],
+                "wrw": 72,
+                "news": {
+                    "id": 0,
+                    "type": "weekly",
+                    "headline": "Worst code review experience?",
+                    "footer": "Week 72 Group Rant - Add tag 'wk72' to your rant",
+                    "height": 65,
+                    "action": "none"
+                }
+            }
+        test_content = json.dumps(test_content)
+        test_status_code = 200
+        mock_reponse = MockHttpResponse(test_content, test_status_code)
+        mock_get_weekly_rants_response.return_value = mock_reponse
+        rant = self.devrant.get_weekly_rants("algo", 2)
+        self.assertTrue(mock_get_weekly_rants_response.called)
+        assert rant['rants'][0]['id'] == 890185
+
+    if __name__ == '__main__':
+        unittest.main()

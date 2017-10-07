@@ -1,4 +1,4 @@
-class MockHttpResponse():
+class MockHttpResponse:
     """
     Test Util: mocks response
     """
