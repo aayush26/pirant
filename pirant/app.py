@@ -18,3 +18,7 @@ class DevRant:
     def get_weekly_rants(self, sort, skip):
         response = self.RequestHandler.get_weekly_rants(sort, skip)
         return self.ResponseHandler.get_rants_build_response(response)
+
+    def search_rants_by_keyword(self, keyword):
+        response = self.RequestHandler.search_rants_by_keyword(keyword)
+        return self.ResponseHandler.search_rants_by_keyword_build_response(response)

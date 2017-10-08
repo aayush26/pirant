@@ -5,6 +5,7 @@ class URLBuilder:
         self.RANTS_URL = "%s/devrant/rants?sort=%s&limit=%d&skip=%d&app=%d"
         self.WEEKLY_RANTS_URL = "%s/devrant/weekly-rants?sort=%s&skip=%d&app=%d"
         self.RANT_PATH = "%s/devrant/rants/%d?app=%d"
+        self.SEARCH_PATH = "%s/devrant/search?term=%s&app=%d"
         self.SORT_TOP = "top"
         self.SORT_ALGO = "algo"
         self.SORT_RECENT = "recent"
@@ -23,6 +24,9 @@ class URLBuilder:
         sort = self.validate_sort_input(self, sort)
         skip = self.validate_int_input(skip)
         return str(self.WEEKLY_RANTS_URL % (self.BASE_URL, sort, skip, self.APP_VERSION))
+
+    def search_rants_by_keywords(self, keyword):
+        return str(self.SEARCH_PATH % (self.BASE_URL, keyword, self.APP_VERSION))
 
     @staticmethod
     def validate_sort_input(self, sort_type):
