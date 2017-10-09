@@ -29,4 +29,14 @@ rant = devrant.get_rant_by_id(194632)
 print rant['rant']['text']
 print rant['comments'][0]['body']
 
+# Get Recent 10 weekly (does not accept limit param)
+rant = devrant.get_weekly_rants("recent", 10)
+print rant['rants'][0]['text']
+
+# Search Rant by keyword
+searchResult = devrant.search_rants_by_keyword("devrant")
+print searchResult['results'][1]['text']
+print searchResult['results'][1]['attached_image']['url']
+print searchResult['results'][1]['user_avatar']['i']
+
 ```

@@ -124,5 +124,62 @@ class TestApp(unittest.TestCase):
         self.assertTrue(mock_get_weekly_rants_response.called)
         assert rant['rants'][0]['id'] == 890185
 
+    @patch('pirant.handlers.RequestHandler.search_rants_by_keyword')
+    def test_happy_case_search_rants_by_keyword(self, mock_search_rants_by_keyword_response):
+        test_content = {
+            "success": True,
+            "results": [{
+                "id": 173,
+                "text": "Random Text 1",
+                "score": 241,
+                "created_time": 14707,
+                "attached_image": "",
+                "num_comments": 5,
+                "tags": [],
+                "vote_state": 0,
+                "edited": False,
+                "rt": 1,
+                "rc": 1,
+                "user_id": 473,
+                "user_username": "dt",
+                "user_score": 3,
+                "user_avatar": {
+                    "b": "2b9d",
+                    "i": "v-175_4-2.jpg"
+                }
+            }, {
+                "id": 5878,
+                "text": "Random text 2",
+                "score": 238,
+                "created_time": 1492513,
+                "attached_image": {
+                    "url": "https://sample.url",
+                    "width": 800,
+                    "height": 516
+                },
+                "num_comments": 13,
+                "tags": ["family", "tech support", "won't fix your computer"],
+                "vote_state": 0,
+                "edited": False,
+                "rt": 1,
+                "rc": 1,
+                "user_id": 5458,
+                "user_username": "ded",
+                "user_score": 327,
+                "user_avatar": {
+                    "b": "2a8b9d",
+                    "i": "v-17_c-3_b-_19-1.jpg"
+                }
+            }]
+        }
+        test_content = json.dumps(test_content)
+        test_status_code = 200
+        test_keyword = "test"
+        mock_reponse = MockHttpResponse(test_content, test_status_code)
+        mock_search_rants_by_keyword_response.return_value = mock_reponse
+        searchResults = self.devrant.search_rants_by_keyword(test_keyword)
+        self.assertTrue(mock_search_rants_by_keyword_response.called)
+        assert searchResults['success'] == True
+
     if __name__ == '__main__':
         unittest.main()

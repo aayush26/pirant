@@ -60,7 +60,16 @@ class RantTest(unittest.TestCase):
             'created_time': 234432,
             'user_id': 43289,
             'num_comments': 121,
-            'user_username': 'user'
+            'user_username': 'user',
+            'upvotes': 2,
+            'downvotes': 0,
+            'user_userscore': 300,
+            'attachedImage': {
+                'url': 'https://test.devrant.io/',
+                'width': 20,
+                'height': 30
+            },
+            'tags': ['Devrant', 'devrant']
         }
 
     def test_happyCaseDeserializeRant(self):
@@ -112,14 +121,23 @@ class RantsResponseTest(unittest.TestCase):
         self.rants_response = pirant.models.RantsResponse()
         self.test_data = {
             'rants': [{
-                    'id': 1234,
-                    'text': 'Txt',
-                    'score': 111,
-                    'created_time': 234432,
-                    'user_id': 43289,
-                    'num_comments': 121,
-                    'user_username': 'user'
-            }],
+                'id': 1234,
+                'text': 'Txt',
+                'score': 111,
+                'created_time': 234432,
+                'user_id': 43289,
+                'num_comments': 121,
+                'user_username': 'user',
+                'upvotes': 2,
+                'downvotes': 0,
+                'user_userscore': 300,
+                'attachedImage': {
+                    'url': 'https://test.devrant.io/',
+                    'width': 20,
+                    'height': 30
+                },
+                'tags': ['Devrant', 'devrant']
+        }],
             'news': {
                 'id': 123,
                 'type': 'T',
@@ -255,7 +273,16 @@ class RantResponseTest(unittest.TestCase):
                 'created_time': 234432,
                 'user_id': 43289,
                 'num_comments': 121,
-                'user_username': 'user'
+                'user_username': 'user',
+                'upvotes': 2,
+                'downvotes': 0,
+                'user_userscore': 300,
+                'attachedImage': {
+                    'url': 'https://test.devrant.io/',
+                    'width': 20,
+                    'height': 30
+                },
+                'tags': ['Devrant', 'devrant']
             },
             'comments': [{
                 'id': 1234,
