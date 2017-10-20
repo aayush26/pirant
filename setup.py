@@ -18,6 +18,7 @@ setup(
     install_requires=[
         "colander",
         "requests",
+	"future",
     ],
     setup_requires=[
         "pytest-runner"
