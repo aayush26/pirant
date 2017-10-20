@@ -1,7 +1,8 @@
+from builtins import object
 from .handlers import RequestHandler, ResponseHandler
 
 
-class DevRant:
+class DevRant(object):
 
     def __init__(self):
         self.RequestHandler = RequestHandler()

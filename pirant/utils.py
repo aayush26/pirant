@@ -1,4 +1,6 @@
-class MockHttpResponse:
+from builtins import object
+
+class MockHttpResponse(object):
     """
     Test Util: mocks response
     """
