@@ -1,4 +1,8 @@
-class URLBuilder:
+from __future__ import absolute_import, division, print_function
+from builtins import str
+from builtins import object
+
+class URLBuilder(object):
     def __init__(self):
         self.APP_VERSION = 3
         self.BASE_URL = "https://www.devrant.io/api"

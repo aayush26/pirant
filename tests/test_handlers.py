@@ -1,3 +1,4 @@
+from __future__ import absolute_import, division, print_function
 import unittest
 from mock import Mock, patch
 from pirant.handlers import RequestHandler, ResponseHandler

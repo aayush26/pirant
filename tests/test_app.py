@@ -1,3 +1,4 @@
+from __future__ import absolute_import, division, print_function
 import unittest
 from pirant import DevRant
 from mock import patch

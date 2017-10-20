@@ -1,10 +1,12 @@
+from __future__ import absolute_import, division, print_function
 import json
 import requests
+from builtins import object
 from .models import RantsResponse, RantResponse, SearchResponse
 from .urlbuilder import URLBuilder
 
 
-class ResponseHandler:
+class ResponseHandler(object):
 
     def __init__(self):
         self.RantsResponse = RantsResponse()
@@ -26,7 +28,7 @@ class ResponseHandler:
         deserialized = self.SearchResponse.deserialize(json_string)
         return deserialized
 
-class RequestHandler:
+class RequestHandler(object):
 
     def __init__(self):
         self.UrlBuilder = URLBuilder()
