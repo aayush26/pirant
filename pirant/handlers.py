@@ -11,20 +11,19 @@ class ResponseHandler:
         self.RantResponse = RantResponse()
         self.SearchResponse = SearchResponse()
 
-    def get_rants_build_response(self, response):
+    def build_response(self, deserializierer, response):
         json_string = json.loads(response.content)
-        deserialized = self.RantsResponse.deserialize(json_string)
+        deserialized = deserializierer.deserialize(json_string)
         return deserialized
+    
+    def get_rants_build_response(self, response):
+        return self.build_response(self.RantsResponse, response)
 
     def get_rant_by_id_build_response(self, response):
-        json_string = json.loads(response.content)
-        deserialized = self.RantResponse.deserialize(json_string)
-        return deserialized
+        return self.build_response(self.RantsResponse, response)
 
     def search_rants_by_keyword_build_response(self, response):
-        json_string = json.loads(response.content)
-        deserialized = self.SearchResponse.deserialize(json_string)
-        return deserialized
+        return self.build_response(self.SearchResponse, response)
 
 class RequestHandler:
 
