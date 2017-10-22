@@ -13,12 +13,12 @@ class UrlBuilderTest(unittest.TestCase):
         self.test_skip = 1
 
     def test_happy_case_get_rant_url(self):
-        expected_url = "https://www.devrant.io/api/devrant/rants?sort=top&limit=10&skip=1&app=3"
+        expected_url = "https://www.devrant.com/api/devrant/rants?sort=top&limit=10&skip=1&app=3"
         obtained_url = self.url_builder.get_rant_url(self.test_sort, self.test_limit, self.test_skip)
         self.assertEqual(expected_url, obtained_url)
 
     def test_empty_sort_type_get_rant_url(self):
-        test_devrant_url = "https://www.devrant.io/api/devrant/rants?sort=top&limit=10&skip=1&app=3"
+        test_devrant_url = "https://www.devrant.com/api/devrant/rants?sort=top&limit=10&skip=1&app=3"
         devrant_url = self.url_builder.get_rant_url("", self.test_limit, self.test_skip)
         self.assertEqual(test_devrant_url, devrant_url)
 
@@ -33,7 +33,7 @@ class UrlBuilderTest(unittest.TestCase):
             self.url_builder.get_rant_url(self.test_sort, test_limit, self.test_skip)
 
     def test_happy_case_get_rant_by_id_url(self):
-        test_devrant_url = "https://www.devrant.io/api/devrant/rants/2?app=3"
+        test_devrant_url = "https://www.devrant.com/api/devrant/rants/2?app=3"
         test_rant_id = 2
         devrant_url = self.url_builder.get_rant_by_id_url(test_rant_id)
         self.assertEqual(test_devrant_url, devrant_url)
