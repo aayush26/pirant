@@ -20,7 +20,7 @@ class ResponseHandler:
         return self.build_response(self.RantsResponse, response)
 
     def get_rant_by_id_build_response(self, response):
-        return self.build_response(self.RantsResponse, response)
+        return self.build_response(self.RantResponse, response)
 
     def search_rants_by_keyword_build_response(self, response):
         return self.build_response(self.SearchResponse, response)
