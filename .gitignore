@@ -6,3 +6,5 @@
 .eggs/
 *.egg-info/
 .coverage
+.idea/
+venv/

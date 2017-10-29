@@ -1,10 +1,12 @@
+from __future__ import absolute_import, division, print_function
 import json
 import requests
+from builtins import object
 from .models import RantsResponse, RantResponse, SearchResponse
 from .urlbuilder import URLBuilder
 
 
-class ResponseHandler:
+class ResponseHandler(object):
 
     def __init__(self):
         self.RantsResponse = RantsResponse()
@@ -31,7 +33,7 @@ class ResponseHandler:
         deserialized = self.RantsResponse.deserialize(json_string)
         return deserialized
 
-class RequestHandler:
+class RequestHandler(object):
 
     def __init__(self):
         self.UrlBuilder = URLBuilder()
@@ -55,7 +57,7 @@ class RequestHandler:
         url = self.UrlBuilder.search_rants_by_keywords(keyword)
         response = requests.get(url)
         return response
-
+      
     def get_collabs(self, skip, sort):
         url = self.UrlBuilder.get_collabs_url(skip, sort)
         response = requests.get(url)

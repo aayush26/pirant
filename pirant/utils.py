@@ -1,4 +1,7 @@
-class MockHttpResponse:
+from __future__ import absolute_import, division, print_function
+from builtins import object
+
+class MockHttpResponse(object):
     """
     Test Util: mocks response
     """
