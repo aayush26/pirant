@@ -11,9 +11,9 @@ class ResponseHandler:
         self.RantResponse = RantResponse()
         self.SearchResponse = SearchResponse()
 
-    def build_response(self, deserializierer, response):
+    def build_response(self, model, response):
         json_string = json.loads(response.content)
-        deserialized = deserializierer.deserialize(json_string)
+        deserialized = model.deserialize(json_string)
         return deserialized
     
     def get_rants_build_response(self, response):
