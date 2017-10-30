@@ -14,7 +14,7 @@ class TestRequestHandler(unittest.TestCase):
         self.requestHandler = RequestHandler()
 
     @patch('pirant.handlers.requests.get')
-    def test_successfulGetRantsResponse(self, mock_success_get_rants_request):
+    def test_successful_get_rants_response(self, mock_success_get_rants_request):
         sortType = "top"
         limit = 1
         skip = 0
@@ -26,7 +26,7 @@ class TestRequestHandler(unittest.TestCase):
         self.assertEqual(testJSONResponse, response.json())
 
     @patch('pirant.handlers.requests.get')
-    def test_successfulGetRantByIdResponse(self, mock_success_get_rant_by_id_request):
+    def test_successful_get_rant_by_id_response(self, mock_success_get_rant_by_id_request):
         rantId = 1
         testJSONResponse = "{\"rant\": {\"id\": 1234,\"text\": \"Txt\",\"score\": 111,\"created_time\": 234432,\"user_id\": 43289,\"num_comments\": 121,\"user_username\": \"user\"},\"comments\": [{\"id\": 1234,\"rant_id\": 2345,\"body\": \"test body\",\"upvotes\": 2,\"downvotes\": 1,\"score\": 10,\"created_time\": 20102313123,\"user_id\": 111,\"user_username\": \"testUser\",\"user_userscore\": 56}],\"success\": True}"
         mock_success_get_rant_by_id_request.return_value = Mock(ok=True)
@@ -54,6 +54,17 @@ class TestRequestHandler(unittest.TestCase):
         mock_success_search_rants_by_keyword.return_value.json.return_value = test_json_response
         response = self.requestHandler.search_rants_by_keyword(test_keyword)
         self.assertTrue(mock_success_search_rants_by_keyword.called)
+        self.assertEqual(test_json_response, response.json())
+
+    @patch('pirant.handlers.requests.get')
+    def test_successful_get_collabs(self, mock_success_get_collabs):
+        test_skip = 0
+        test_limit = 1
+        test_json_response = "{\"success\":true,\"rants\":[{\"id\":435,\"text\":\"Test Text\",\"score\":5,\"created_time\":15072,\"attached_image\":\"\",\"num_comments\":3,\"tags\":[],\"vote_state\":0,\"edited\":false,\"link\":\"collabs\/913738\/sample-link\",\"rt\":2,\"rc\":2,\"c_type\":3,\"c_type_long\":\"Project idea\",\"user_id\":9856,\"user_username\":\"testuser\",\"user_score\":14,\"user_avatar\":{\"b\":\"b9d\",\"i\":\"v-10-1_2-10_15-11_4-1.jpg\"}}]}"
+        mock_success_get_collabs.return_value = Mock(ok=True)
+        mock_success_get_collabs.return_value.json.return_value = test_json_response
+        response = self.requestHandler.get_collabs(test_skip, test_limit)
+        self.assertTrue(mock_success_get_collabs.called)
         self.assertEqual(test_json_response, response.json())
 
 class TestResponseHandler(unittest.TestCase):

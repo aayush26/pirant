@@ -41,13 +41,24 @@ class Rant(colander.MappingSchema):
     num_comments = colander.SchemaNode(colander.Int())
     user_username = colander.SchemaNode(colander.String())
     user_userscore = colander.SchemaNode(colander.Int(), missing=colander.drop)
+    edited = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
+
+    # The below attributes only exist for collabs
+    link = colander.SchemaNode(colander.String(), missing=colander.drop)
+    c_type = colander.SchemaNode(colander.Int(), missing=colander.drop)
+    c_type_long = colander.SchemaNode(colander.String(), missing=colander.drop)
+    c_description = colander.SchemaNode(colander.String(), missing=colander.drop)
+    c_tect_stack = colander.SchemaNode(colander.String(), missing=colander.drop)
+    c_team_size = colander.SchemaNode(colander.Int(), missing=colander.drop)
+    c_url = colander.SchemaNode(colander.String(), missing=colander.drop)
+
 
 class Rants(colander.SequenceSchema):
     rant = Rant()
 
 class RantsResponse(colander.MappingSchema):
     rants = Rants()
-    news = News()
+    news = News(missing=colander.drop)
     success = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
     error = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
     settings = colander.SchemaNode(colander.String(), missing=colander.drop)

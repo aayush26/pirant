@@ -10,7 +10,7 @@ class TestApp(unittest.TestCase):
         self.devrant = DevRant()
 
     @patch('pirant.handlers.RequestHandler.get_rants')
-    def test_happyCaseGetRants(self, mock_get_rants_response):
+    def test_happy_case_get_rants(self, mock_get_rants_response):
         test_content = {
             'rants': [{
                     'id': 1234,
@@ -42,7 +42,7 @@ class TestApp(unittest.TestCase):
         self.assertEqual(rants['rants'][0]['text'], 'Txt')
 
     @patch('pirant.handlers.RequestHandler.get_rant_by_id')
-    def test_happyCaseGetRantById(self, mock_get_rant_by_id_response):
+    def test_happy_case_get_rant_by_id(self, mock_get_rant_by_id_response):
         test_content = {
             'rant': {
                 'id': 1234,
@@ -176,11 +176,82 @@ class TestApp(unittest.TestCase):
         test_content = json.dumps(test_content)
         test_status_code = 200
         test_keyword = "test"
-        mock_reponse = MockHttpResponse(test_content, test_status_code)
-        mock_search_rants_by_keyword_response.return_value = mock_reponse
+        mock_response = MockHttpResponse(test_content, test_status_code)
+        mock_search_rants_by_keyword_response.return_value = mock_response
         searchResults = self.devrant.search_rants_by_keyword(test_keyword)
         self.assertTrue(mock_search_rants_by_keyword_response.called)
         assert searchResults['success'] == True
+
+    @patch('pirant.handlers.RequestHandler.get_collabs')
+    def test_happy_case_get_collabs(self, mock_get_collabs_response):
+        test_content = {
+            "success": True,
+            "rants": [{
+                "id": 1,
+                "text": "Test text",
+                "score": 5,
+                "created_time": 1507872,
+                "attached_image": "",
+                "num_comments": 3,
+                "tags": [],
+                "vote_state": 0,
+                "edited": False,
+                "link": "collabs\/1\/test",
+                "rt": 2,
+                "rc": 2,
+                "c_type": 3,
+                "c_type_long": "Project idea",
+                "user_id": 3321,
+                "user_username": "test",
+                "user_score": 14,
+                "user_avatar": {
+                    "b": "2awsd",
+                    "i": "v-17_c-3_b-4_g-m_9-1_1-9-9_6-3_10-1_2-10_15-11_4-1.jpg"
+                }
+            }]
+        }
+        test_content = json.dumps(test_content)
+        test_status_code = 200
+        mock_response = MockHttpResponse(test_content, test_status_code)
+        mock_get_collabs_response.return_value = mock_response
+        collabs = self.devrant.get_collabs(0,1)
+        self.assertTrue(mock_get_collabs_response.called)
+        assert collabs['rants'][0]['id'] == 1
+
+    @patch('pirant.handlers.RequestHandler.get_rant_by_id')
+    def test_happy_case_get_collab_by_id(self, mock_get_rant_by_id_response):
+        test_content = {
+            'rant': {
+                'id': 1234,
+                'text': 'Txt',
+                'score': 111,
+                'created_time': 234432,
+                'user_id': 43289,
+                'num_comments': 121,
+                'user_username': 'user'
+            },
+            'comments': [{
+                'id': 1234,
+                'rant_id': 2345,
+                'body': 'test body',
+                'upvotes': 2,
+                'downvotes': 1,
+                'score': 10,
+                'created_time': 20102313123,
+                'user_id': 111,
+                'user_username': 'testUser',
+                'user_userscore': 56
+            }],
+            'success': True
+        }
+        test_content = json.dumps(test_content)
+        test_status_code = 200
+        mock_response = MockHttpResponse(test_content, test_status_code)
+        mock_get_rant_by_id_response.return_value = mock_response
+        rant = self.devrant.get_collab_by_id(2)
+        self.assertTrue(mock_get_rant_by_id_response.called)
+        assert rant['rant']['id'] == 1234
+        assert rant['comments'][0]['upvotes'] == 2
 
     if __name__ == '__main__':
         unittest.main()

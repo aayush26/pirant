@@ -27,13 +27,18 @@ class ResponseHandler(object):
     def search_rants_by_keyword_build_response(self, response):
         return self.build_response(self.SearchResponse, response)
 
+    def get_collabs_build_response(self, response):
+        json_string = json.loads(response.content)
+        deserialized = self.RantsResponse.deserialize(json_string)
+        return deserialized
+
 class RequestHandler(object):
 
     def __init__(self):
         self.UrlBuilder = URLBuilder()
 
     def get_rants(self, sort, limit, skip):
-        url = self.UrlBuilder.get_rant_url(sort, limit, skip)
+        url = self.UrlBuilder.get_rants_url(sort, limit, skip)
         response = requests.get(url)
         return response
 
@@ -49,5 +54,10 @@ class RequestHandler(object):
 
     def search_rants_by_keyword(self, keyword):
         url = self.UrlBuilder.search_rants_by_keywords(keyword)
+        response = requests.get(url)
+        return response
+      
+    def get_collabs(self, skip, sort):
+        url = self.UrlBuilder.get_collabs_url(skip, sort)
         response = requests.get(url)
         return response
