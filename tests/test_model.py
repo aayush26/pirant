@@ -66,7 +66,7 @@ class RantTest(unittest.TestCase):
             'downvotes': 0,
             'user_userscore': 300,
             'attachedImage': {
-                'url': 'https://test.devrant.io/',
+                'url': 'https://test.devrant.com/',
                 'width': 20,
                 'height': 30
             },
@@ -133,7 +133,7 @@ class RantsResponseTest(unittest.TestCase):
                 'downvotes': 0,
                 'user_userscore': 300,
                 'attachedImage': {
-                    'url': 'https://test.devrant.io/',
+                    'url': 'https://test.devrant.com/',
                     'width': 20,
                     'height': 30
                 },
@@ -279,7 +279,7 @@ class RantResponseTest(unittest.TestCase):
                 'downvotes': 0,
                 'user_userscore': 300,
                 'attachedImage': {
-                    'url': 'https://test.devrant.io/',
+                    'url': 'https://test.devrant.com/',
                     'width': 20,
                     'height': 30
                 },

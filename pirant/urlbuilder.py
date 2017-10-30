@@ -5,7 +5,7 @@ from builtins import object
 class URLBuilder(object):
     def __init__(self):
         self.APP_VERSION = 3
-        self.BASE_URL = "https://www.devrant.io/api/devrant"
+        self.BASE_URL = "https://www.devrant.com/api/devrant"
         self.RANTS_URL = "%s/rants?sort=%s&limit=%d&skip=%d&app=%d"
         self.WEEKLY_RANTS_URL = "%s/weekly-rants?sort=%s&skip=%d&app=%d"
         self.RANT_URL = "%s/rants/%d?app=%d"
