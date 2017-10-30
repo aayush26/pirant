@@ -28,9 +28,7 @@ class ResponseHandler(object):
         return self.build_response(self.SearchResponse, response)
 
     def get_collabs_build_response(self, response):
-        json_string = json.loads(response.content)
-        deserialized = self.RantsResponse.deserialize(json_string)
-        return deserialized
+        return self.build_response(self.RantsResponse, response)
 
 class RequestHandler(object):
 
