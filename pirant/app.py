@@ -10,8 +10,8 @@ class DevRant(object):
 
     def __init__(self):
         """Initialize the class instance."""
-        self.RequestHandler = RequestHandler()
-        self.ResponseHandler = ResponseHandler()
+        self.request_handler = RequestHandler()
+        self.response_handler = ResponseHandler()
 
     def get_rants(self, sort, limit, skip):
         """
@@ -22,8 +22,8 @@ class DevRant(object):
         :param skip:
         :return:
         """
-        response = self.RequestHandler.get_rants(sort, limit, skip)
-        return self.ResponseHandler.get_rants_build_response(response)
+        response = self.request_handler.get_rants(sort, limit, skip)
+        return self.response_handler.get_rants_build_response(response)
 
     def get_rant_by_id(self, rant_id):
         """
@@ -32,8 +32,8 @@ class DevRant(object):
         :param rant_id:
         :return:
         """
-        response = self.RequestHandler.get_rant_by_id(rant_id)
-        return self.ResponseHandler.get_rant_by_id_build_response(response)
+        response = self.request_handler.get_rant_by_id(rant_id)
+        return self.response_handler.get_rant_by_id_build_response(response)
 
     def get_weekly_rants(self, sort, skip):
         """
@@ -43,8 +43,8 @@ class DevRant(object):
         :param skip:
         :return:
         """
-        response = self.RequestHandler.get_weekly_rants(sort, skip)
-        return self.ResponseHandler.get_rants_build_response(response)
+        response = self.request_handler.get_weekly_rants(sort, skip)
+        return self.response_handler.get_rants_build_response(response)
 
     def search_rants_by_keyword(self, keyword):
         """
@@ -53,8 +53,8 @@ class DevRant(object):
         :param keyword:
         :return:
         """
-        response = self.RequestHandler.search_rants_by_keyword(keyword)
-        return self.ResponseHandler.search_rants_by_keyword_build_response(response)
+        response = self.request_handler.search_rants_by_keyword(keyword)
+        return self.response_handler.search_rants_by_keyword_build_response(response)
 
     def get_collabs(self, skip, limit):
         """
@@ -64,8 +64,8 @@ class DevRant(object):
         :param limit:
         :return:
         """
-        response = self.RequestHandler.get_collabs(skip, limit)
-        return self.ResponseHandler.get_collabs_build_response(response)
+        response = self.request_handler.get_collabs(skip, limit)
+        return self.response_handler.get_collabs_build_response(response)
 
     def get_collab_by_id(self, collab_id):
         """
@@ -74,5 +74,5 @@ class DevRant(object):
         :param collab_id:
         :return:
         """
-        response = self.RequestHandler.get_rant_by_id(collab_id)
-        return self.ResponseHandler.get_rant_by_id_build_response(response)
+        response = self.request_handler.get_rant_by_id(collab_id)
+        return self.response_handler.get_rant_by_id_build_response(response)
