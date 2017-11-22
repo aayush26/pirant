@@ -48,31 +48,31 @@ class RequestHandler(object):
         self.url_builder = URLBuilder()
 
     def get_rants(self, sort, limit, skip):
-        """Build the get_rants() request, send it and return its repsonse."""
+        """Build a request to get rants, send it and return its repsonse."""
         url = self.url_builder.get_rants_url(sort, limit, skip)
         response = requests.get(url)
         return response
 
     def get_rant_by_id(self, rant_id):
-        """Build the get_rant_by_id() request, send it and return its repsonse."""
+        """Build the request to get a rant by id, send it and return its repsonse."""
         url = self.url_builder.get_rant_by_id_url(rant_id)
         response = requests.get(url)
         return response
 
     def get_weekly_rants(self, sort, skip):
-        """Build the get_weekly_rants() request, send it and return its repsonse."""
+        """Build the request to get the weekly rants, send it and return its repsonse."""
         url = self.url_builder.get_weekly_rant_url(sort, skip)
         response = requests.get(url)
         return response
 
     def search_rants_by_keyword(self, keyword):
-        """Build the search_rants_by_keyword() request, send it and return its repsonse."""
+        """Build the request to search for rants by keyword, send it and return its repsonse."""
         url = self.url_builder.search_rants_by_keywords(keyword)
         response = requests.get(url)
         return response
 
     def get_collabs(self, skip, sort):
-        """Build the get_collabs() request, send it and return its repsonse."""
+        """Build the request to get all collabs, send it and return its repsonse."""
         url = self.url_builder.get_collabs_url(skip, sort)
         response = requests.get(url)
         return response

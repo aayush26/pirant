@@ -7,6 +7,8 @@ import colander
 
 
 class News(colander.MappingSchema):
+    """:class:`colander.MappingScheme` for News articles."""
+
     id = colander.SchemaNode(colander.Int(), missing=colander.drop)
     type = colander.SchemaNode(colander.String(), missing=colander.drop)
     headline = colander.SchemaNode(colander.String(), missing=colander.drop)
@@ -17,10 +19,14 @@ class News(colander.MappingSchema):
 
 
 class Tags(colander.SequenceSchema):
+    """:class:`colander.SequenceSchema` for tags."""
+
     tag = colander.SchemaNode(colander.String())
 
 
 class Image(colander.MappingSchema):
+    """:class:`colander.MappingScheme` for Images."""
+
     url = colander.SchemaNode(colander.String())
     width = colander.SchemaNode(colander.Int())
     height = colander.SchemaNode(colander.Int())
@@ -34,11 +40,15 @@ class Image(colander.MappingSchema):
 
 
 class UserAvatar(colander.MappingSchema):
+    """:class:`colander.MappingScheme` for user Avatars."""
+
     b = colander.SchemaNode(colander.String(), missing=colander.drop)
     i = colander.SchemaNode(colander.String(), missing=colander.drop)
 
 
 class Rant(colander.MappingSchema):
+    """:class:`colander.MappingScheme` for Rants."""
+
     id = colander.SchemaNode(colander.Int())
     text = colander.SchemaNode(colander.String())
     score = colander.SchemaNode(colander.Int())
@@ -65,10 +75,14 @@ class Rant(colander.MappingSchema):
 
 
 class Rants(colander.SequenceSchema):
+    """:class:`colander.SequenceSchema` for Images."""
+
     rant = Rant()
 
 
 class RantsResponse(colander.MappingSchema):
+    """:class:`colander.MappingSchema` for RantsResponse objects."""
+
     rants = Rants()
     news = News(missing=colander.drop)
     success = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
@@ -79,6 +93,8 @@ class RantsResponse(colander.MappingSchema):
 
 
 class Comment(colander.MappingSchema):
+    """:class:`colander.MappingSchema` for comments."""
+
     id = colander.SchemaNode(colander.Int())
     rant_id = colander.SchemaNode(colander.Int())
     body = colander.SchemaNode(colander.String())
@@ -92,10 +108,14 @@ class Comment(colander.MappingSchema):
 
 
 class Comments(colander.SequenceSchema):
+    """:class:`colander.SequenceSchema` for comment Mappings."""
+
     comment = Comment()
 
 
 class RantResponse(colander.MappingSchema):
+    """:class:`colander.MappingSchema` for RantResponse objects."""
+
     comments = Comments()
     rant = Rant()
     success = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
@@ -103,6 +123,8 @@ class RantResponse(colander.MappingSchema):
 
 
 class SearchResponse(colander.MappingSchema):
+    """:class:`colander.MappingSchema` for SearchResponse objects."""
+
     success = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
     error = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
     results = Rants()
