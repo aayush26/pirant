@@ -48,6 +48,7 @@ class URLBuilder(object):
         skip = self.validate_int_input(skip)
         return str(self.collabs_url % (self.base_url, self.app_version, skip, limit))
 
+    @staticmethod
     def validate_sort_input(self, sort_type):
         """Validate that input for sort has proper type."""
         if sort_type == "":
