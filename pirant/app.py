@@ -1,6 +1,6 @@
 from __future__ import absolute_import, division, print_function
 from builtins import object
-from .handlers import RequestHandler, ResponseHandler
+from pirant.handlers import RequestHandler, ResponseHandler
 
 
 class DevRant(object):

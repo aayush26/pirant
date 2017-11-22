@@ -2,8 +2,8 @@ from __future__ import absolute_import, division, print_function
 import json
 import requests
 from builtins import object
-from .models import RantsResponse, RantResponse, SearchResponse
-from .urlbuilder import URLBuilder
+from pirant.models import RantsResponse, RantResponse, SearchResponse
+from pirant.urlbuilder import URLBuilder
 
 
 class ResponseHandler(object):
