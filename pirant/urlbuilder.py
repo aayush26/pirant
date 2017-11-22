@@ -23,7 +23,7 @@ class URLBuilder(object):
 
     def get_rants_url(self, sort, limit, skip):
         """Generate a request URL to get available rants."""
-        sort = self.validate_sort_input(self, sort)
+        sort = self.validate_sort_input(sort)
         limit = self.validate_int_input(limit)
         skip = self.validate_int_input(skip)
         return str(self.rants_url % (self.base_url, sort, limit, skip, self.app_version))
@@ -34,7 +34,7 @@ class URLBuilder(object):
 
     def get_weekly_rant_url(self, sort, skip):
         """Generate a request URL to get the weekly rants."""
-        sort = self.validate_sort_input(self, sort)
+        sort = self.validate_sort_input(sort)
         skip = self.validate_int_input(skip)
         return str(self.weekly_rants_url % (self.base_url, sort, skip, self.app_version))
 
@@ -48,7 +48,6 @@ class URLBuilder(object):
         skip = self.validate_int_input(skip)
         return str(self.collabs_url % (self.base_url, self.app_version, skip, limit))
 
-    @staticmethod
     def validate_sort_input(self, sort_type):
         """Validate that input for sort has proper type."""
         if sort_type == "":
