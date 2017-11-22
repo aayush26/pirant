@@ -10,11 +10,14 @@ python:
   - "pypy-5.3.1"
 
 install:
+  - pip install pylint pydocstyle
   - pip install -U setuptools
   - pip install -e .
   - pip install -r requirements-dev.txt
 
 script:
+  - pylint --rcfile=pylint.rc pirant
+  - pydocstyle pirant
   - pytest tests
   - coverage run --source=pirant setup.py test
 
