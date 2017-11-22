@@ -21,7 +21,7 @@ class ResponseHandler(object):
         json_string = json.loads(response.content)
         deserialized = model.deserialize(json_string)
         return deserialized
-    
+
     def get_rants_build_response(self, response):
         """Deserialize the given Rants to RantsResponse object."""
         return self.build_response(self.rants_response, response)
@@ -70,7 +70,7 @@ class RequestHandler(object):
         url = self.url_builder.search_rants_by_keywords(keyword)
         response = requests.get(url)
         return response
-      
+
     def get_collabs(self, skip, sort):
         """Build the get_collabs() request, send it and return its repsonse."""
         url = self.url_builder.get_collabs_url(skip, sort)
