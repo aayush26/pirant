@@ -25,8 +25,8 @@ class Image(colander.MappingSchema):
     width = colander.SchemaNode(colander.Int())
     height = colander.SchemaNode(colander.Int())
 
-    @staticmethod
-    def deserialize(cstruct):
+    # pylint: disable=signature-differs
+    def deserialize(self, cstruct):
         """Deserialize the given CStruct for further use by pirant."""
         if cstruct == "":
             cstruct = {}
