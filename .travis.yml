@@ -27,6 +27,7 @@ jobs:
       script: pydocstyle pirant
     - stage: Deploy
       script: skip
+      python: 3.6
       deploy:
         provider: pypi
         user: USERNAME
@@ -35,7 +36,7 @@ jobs:
         distributions: "bdist_wheel"
         on:
           tags: true
-          python: 3.6
+
       if: branch = master
 
 stages:
