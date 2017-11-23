@@ -2,14 +2,14 @@ from __future__ import absolute_import, division, print_function
 import json
 import requests
 from builtins import object
-from .models import RantsResponse, RantResponse, SearchResponse
+from .models import MultiRantsResponse, RantResponse, SearchResponse
 from .urlbuilder import URLBuilder
 
 
 class ResponseHandler(object):
 
     def __init__(self):
-        self.RantsResponse = RantsResponse()
+        self.MultiRantsResponse = MultiRantsResponse()
         self.RantResponse = RantResponse()
         self.SearchResponse = SearchResponse()
 
@@ -19,7 +19,7 @@ class ResponseHandler(object):
         return deserialized
     
     def get_rants_build_response(self, response):
-        return self.build_response(self.RantsResponse, response)
+        return self.build_response(self.MultiRantsResponse, response)
 
     def get_rant_by_id_build_response(self, response):
         return self.build_response(self.RantResponse, response)
@@ -28,7 +28,7 @@ class ResponseHandler(object):
         return self.build_response(self.SearchResponse, response)
 
     def get_collabs_build_response(self, response):
-        return self.build_response(self.RantsResponse, response)
+        return self.build_response(self.MultiRantsResponse, response)
 
 class RequestHandler(object):
 

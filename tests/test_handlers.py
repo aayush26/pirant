@@ -1,6 +1,9 @@
 from __future__ import absolute_import, division, print_function
 import unittest
-from mock import Mock, patch
+try:
+    from mock import Mock, patch
+except ImportError:
+    from unittest.mock import Mock, patch
 from pirant.handlers import RequestHandler, ResponseHandler
 import json
 from pirant.utils import MockHttpResponse

@@ -53,11 +53,11 @@ class Rant(colander.MappingSchema):
     c_url = colander.SchemaNode(colander.String(), missing=colander.drop)
 
 
-class Rants(colander.SequenceSchema):
+class MultiRants(colander.SequenceSchema):
     rant = Rant()
 
-class RantsResponse(colander.MappingSchema):
-    rants = Rants()
+class MultiRantsResponse(colander.MappingSchema):
+    rants = MultiRants()
     news = News(missing=colander.drop)
     success = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
     error = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
@@ -89,4 +89,4 @@ class RantResponse(colander.MappingSchema):
 class SearchResponse(colander.MappingSchema):
     success = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
     error = colander.SchemaNode(colander.Boolean(), missing=colander.drop)
-    results = Rants()
+    results = MultiRants()

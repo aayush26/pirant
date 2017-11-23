@@ -119,7 +119,7 @@ class RantsResponseTest(unittest.TestCase):
     """
 
     def setUp(self):
-        self.rants_response = pirant.models.RantsResponse()
+        self.rants_response = pirant.models.MultiRantsResponse()
         self.test_data = {
             'rants': [{
                 'id': 1234,

@@ -1,7 +1,10 @@
 from __future__ import absolute_import, division, print_function
 import unittest
 from pirant import DevRant
-from mock import patch
+try:
+    from mock import Mock, patch
+except ImportError:
+    from unittest.mock import Mock, patch
 import json
 from pirant.utils import MockHttpResponse
 
