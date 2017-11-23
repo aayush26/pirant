@@ -15,16 +15,16 @@ install:
   - pip install -e .
   - pip install -r requirements-dev.txt
 
+script:
+  - pytest tests
+  - coverage run --source=pirant setup.py test
+
 jobs:
   include:
     - stage: Linting
       python: 3.6
       script: pylint --rcfile=pylint.rc pirant
       script: pydocstyle pirant
-    - stage: Testing
-      script:
-       - pytest tests
-       - coverage run --source=pirant setup.py test
     - stage: Deploy
       script: skip
       deploy:
@@ -40,7 +40,7 @@ jobs:
 
 stages:
   - Linting
-  - Testing
+  - Test
   - Deploy
 
 after_success:
