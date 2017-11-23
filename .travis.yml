@@ -37,6 +37,10 @@ jobs:
           python: '3.6'
       if: branch = master
 
+stages:
+  - Linting
+  - Testing
+  - Deploy
 
 after_success:
   - coveralls
