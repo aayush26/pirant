@@ -1,15 +1,16 @@
 language: python
 
 python:
-  - "2.7"
-  - "3.3"
-  - "3.4"
+  - 2.7
+  - 3.3
+  - 3.4
   # PyPy versions
-  - "pypy"  # PyPy2 2.5.0
-  - "pypy3" # Pypy3 2.4.0
-  - "pypy-5.3.1"
+  - pypy  # PyPy2 2.5.0
+  - pypy3 # Pypy3 2.4.0
+  - pypy-5.3.1
 
 install:
+  - pip install pylint pydocstyle
   - pip install -U setuptools
   - pip install -e .
   - pip install -r requirements-dev.txt
@@ -17,6 +18,32 @@ install:
 script:
   - pytest tests
   - coverage run --source=pirant setup.py test
+
+jobs:
+  include:
+    - stage: Linting
+      python: 3.6
+      script: pylint --rcfile=pylint.rc pirant
+      script: pydocstyle pirant
+    - stage: Deploy
+      script: skip
+      python: 3.6
+      deploy:
+        provider: pypi
+        user: USERNAME
+        password:
+          secure: YOUR_ENCRYPTED_PASSWORD
+        distributions: "bdist_wheel"
+        on:
+          tags: true
+
+      if: branch = master
+
+stages:
+  - Linting
+  - Test
+  - name: Deploy
+    if: tag IS present
 
 after_success:
   - coveralls
