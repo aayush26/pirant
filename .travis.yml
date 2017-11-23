@@ -42,7 +42,8 @@ jobs:
 stages:
   - Linting
   - Test
-  - Deploy
+  - name: Deploy
+    if: tag IS present
 
 after_success:
   - coveralls
