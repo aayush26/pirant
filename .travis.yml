@@ -1,4 +1,11 @@
 language: python
+  - "2.7"
+  - "3.3"
+  - "3.4"
+  # PyPy versions
+  - "pypy"  # PyPy2 2.5.0
+  - "pypy3" # Pypy3 2.4.0
+  - "pypy-5.3.1"
 
 install:
   - pip install pylint pydocstyle
@@ -13,17 +20,8 @@ jobs:
       script: pylint --rcfile=pylint.rc pirant
       script: pydocstyle pirant
     - stage: Testing
-      python:
-        - "2.7"
-        - "3.3"
-        - "3.4"
-        # PyPy versions
-        - "pypy"  # PyPy2 2.5.0
-        - "pypy3" # Pypy3 2.4.0
-        - "pypy-5.3.1"
       script: pytest tests
-      script:
-        - coverage run --source=pirant setup.py test
+      script: coverage run --source=pirant setup.py test
     - stage: Deploy
       script: skip
       deploy:
