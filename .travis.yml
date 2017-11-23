@@ -15,11 +15,28 @@ install:
   - pip install -e .
   - pip install -r requirements-dev.txt
 
-script:
-  - pylint --rcfile=pylint.rc pirant
-  - pydocstyle pirant
-  - pytest tests
-  - coverage run --source=pirant setup.py test
+jobs:
+  include:
+    - stage: Linting
+      script: pylint --rcfile=pylint.rc pirant
+      script: pydocstyle pirant
+    - stage: Testing
+      script: pytest tests
+      script:
+        - coverage run --source=pirant setup.py test
+    - stage: Deploy
+      script: skip
+      deploy:
+        provider: pypi
+        user: USERNAME
+        password:
+          secure: YOUR_ENCRYPTED_PASSWORD
+        distributions: "bdist_wheel"
+        on:
+          tags: true
+          python: '3.6'
+      if: branch = master
+
 
 after_success:
   - coveralls
