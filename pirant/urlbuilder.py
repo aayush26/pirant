@@ -26,27 +26,29 @@ class URLBuilder(object):
         sort = self.validate_sort_input(sort)
         limit = self.validate_int_input(limit)
         skip = self.validate_int_input(skip)
-        return str(self.rants_url % (self.base_url, sort, limit, skip, self.app_version))
+        return self.rants_url % (self.base_url, sort, limit, skip, self.app_version)
 
     def get_rant_by_id_url(self, rant_id):
         """Generate a request URL to get a rant by its id."""
-        return str(self.rant_url % (self.base_url, rant_id, self.app_version))
+        return self.rant_url % (self.base_url, rant_id, self.app_version)
+
 
     def get_weekly_rant_url(self, sort, skip):
         """Generate a request URL to get the weekly rants."""
         sort = self.validate_sort_input(sort)
         skip = self.validate_int_input(skip)
-        return str(self.weekly_rants_url % (self.base_url, sort, skip, self.app_version))
+        return self.weekly_rants_url % (self.base_url, sort, skip, self.app_version)
 
     def search_rants_by_keywords(self, keyword):
         """Generate a request URL to search rants by keywords."""
-        return str(self.search_url % (self.base_url, keyword, self.app_version))
+        return self.search_url % (self.base_url, keyword, self.app_version)
 
     def get_collabs_url(self, skip, limit):
         """Generate a request URL to get available collabs."""
         limit = self.validate_int_input(limit)
         skip = self.validate_int_input(skip)
-        return str(self.collabs_url % (self.base_url, self.app_version, skip, limit))
+        return self.collabs_url % (self.base_url, self.app_version, skip, limit)
+
 
     def validate_sort_input(self, sort_type):
         """Validate that input for sort has proper type."""
