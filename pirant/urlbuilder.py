@@ -20,23 +20,23 @@ class URLBuilder(object):
         sort = self.validate_sort_input(self, sort)
         limit = self.validate_int_input(limit)
         skip = self.validate_int_input(skip)
-        return str(self.RANTS_URL % (self.BASE_URL, sort, limit, skip, self.APP_VERSION))
+        return self.RANTS_URL % (self.BASE_URL, sort, limit, skip, self.APP_VERSION)
 
     def get_rant_by_id_url(self, rant_id):
-        return str(self.RANT_URL % (self.BASE_URL, rant_id, self.APP_VERSION))
+        return self.RANT_URL % (self.BASE_URL, rant_id, self.APP_VERSION)
 
     def get_weekly_rant_url(self, sort, skip):
         sort = self.validate_sort_input(self, sort)
         skip = self.validate_int_input(skip)
-        return str(self.WEEKLY_RANTS_URL % (self.BASE_URL, sort, skip, self.APP_VERSION))
+        return self.WEEKLY_RANTS_URL % (self.BASE_URL, sort, skip, self.APP_VERSION)
 
     def search_rants_by_keywords(self, keyword):
-        return str(self.SEARCH_URL % (self.BASE_URL, keyword, self.APP_VERSION))
+        return self.SEARCH_URL % (self.BASE_URL, keyword, self.APP_VERSION)
 
     def get_collabs_url(self, skip, limit):
         limit = self.validate_int_input(limit)
         skip = self.validate_int_input(skip)
-        return str(self.COLLABS_URL % (self.BASE_URL, self.APP_VERSION, skip, limit))
+        return self.COLLABS_URL % (self.BASE_URL, self.APP_VERSION, skip, limit)
 
     @staticmethod
     def validate_sort_input(self, sort_type):
