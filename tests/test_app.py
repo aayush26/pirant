@@ -2,11 +2,13 @@ from __future__ import absolute_import, division, print_function
 import unittest
 from pirant import DevRant
 try:
-    from mock import Mock, patch
+    from mock import patch
 except ImportError:
-    from unittest.mock import Mock, patch
+    from unittest.mock import patch
+
 import json
 from pirant.utils import MockHttpResponse
+
 
 class TestApp(unittest.TestCase):
     def setUp(self):
