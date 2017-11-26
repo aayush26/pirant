@@ -2,8 +2,8 @@
 from __future__ import absolute_import, division, print_function
 import json
 import requests
-from .models import MultiRantsResponse, RantResponse, SearchResponse
-from .urlbuilder import URLBuilder
+from pirant.models import MultiRantsResponse, RantResponse, SearchResponse
+from pirant.urlbuilder import URLBuilder
 
 
 
@@ -16,7 +16,6 @@ class ResponseHandler(object):
         self.rant_response = RantResponse()
         self.search_response = SearchResponse()
 
-    @staticmethod
     def build_response(model, response):
         """Build a  response for the given Response Object and model."""
         json_string = json.loads(response.content)
