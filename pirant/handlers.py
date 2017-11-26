@@ -2,8 +2,9 @@
 from __future__ import absolute_import, division, print_function
 import json
 import requests
-from pirant.models import RantsResponse, RantResponse, SearchResponse
+from pirant.models import MultiRantsResponse, RantResponse, SearchResponse
 from pirant.urlbuilder import URLBuilder
+
 
 
 class ResponseHandler(object):
@@ -11,7 +12,7 @@ class ResponseHandler(object):
 
     def __init__(self):
         """Initialize the instance."""
-        self.rants_response = RantsResponse()
+        self.multi_rants_response = MultiRantsResponse()
         self.rant_response = RantResponse()
         self.search_response = SearchResponse()
 
@@ -24,7 +25,7 @@ class ResponseHandler(object):
 
     def get_rants_build_response(self, response):
         """Deserialize the given Rants to RantsResponse object."""
-        return self.build_response(self.rants_response, response)
+        return self.build_response(self.multi_rants_response, response)
 
     def get_rant_by_id_build_response(self, response):
         """Deserialize the given Rant to RantsResponse object."""
@@ -37,7 +38,7 @@ class ResponseHandler(object):
 
     def get_collabs_build_response(self, response):
         """Deserialize the given Collabs to RantsResponse object."""
-        return self.build_response(self.rants_response, response)
+        return self.build_response(self.multi_rants_response, response)
 
 
 class RequestHandler(object):
